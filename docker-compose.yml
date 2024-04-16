@@ -14,6 +14,8 @@ services:
       APP_ENV: "dev"
       APP_DEBUG: "True"
       APP_PORT: 5020
+    ports:
+      - "5020:5020"
     volumes:
       - appdata:/var/www
     networks:
@@ -36,7 +38,7 @@ services:
       APP_DEBUG: "true"
       SERVICE_NAME: "webserver"
     ports:
-      - "12222:80"
+      - "80:80"
       - "443:443"
     volumes:
       - nginxdata:/etc/nginx

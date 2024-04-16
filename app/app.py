@@ -1,9 +1,9 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 # from flask_pymongo import PyMongo
 
 application = Flask(__name__)
-
+# application.config['APPLICATION_ROOT'] = '/dtcui'
 # application.config["MONGO_URI"] = 'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOSTNAME'] + ':27017/' + os.environ['MONGODB_DATABASE']
 
 # mongo = PyMongo(application)
@@ -11,10 +11,11 @@ application = Flask(__name__)
 
 @application.route('/')
 def index():
-    return jsonify(
-        status=True,
-        message='Welcome to the Dockerized Flask app!'
-    )
+    # return jsonify(
+    #     status=True,
+    #     message='Welcome to the Dockerized Flask application!'
+    # )
+    return render_template('index.html')
 
 # @application.route('/todo')
 # def todo():
@@ -27,7 +28,7 @@ def index():
 #             'id': str(todo['_id']),
 #             'todo': todo['todo']
 #         }
-#         data.append(item)
+#         data.applicationend(item)
 
 #     return jsonify(
 #         status=True,

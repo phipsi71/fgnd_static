@@ -1,51 +1,50 @@
-version: '3'
 services:
 
   #Flask App Container
-  flask:
+  flask_st:
     build:
       context: app
       dockerfile: Dockerfile
-    container_name: flask
-    image: flaskr
+    container_name: flask_st
+    image: flask_st
     # restart: unless-stopped
     tty: true
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "True"
-      APP_PORT: 5020
+      APP_PORT: 5021
     ports:
-      - "5020:5020"
-    volumes:
-      - appdata:/var/www
+      - "5021:5021"
+    # volumes:
+    #   - appdata:/var/www
     networks:
       - frontend
       - backend
 
 
   #Nginx Service
-  webserver:
-    build:
-      context: nginx
-      dockerfile: Dockerfile
-    image: nginxr
-    container_name: webserver
-    # restart: unless-stopped
-    tty: true
-    environment:
-      APP_ENV: "dev"
-      APP_NAME: "webserver"
-      APP_DEBUG: "true"
-      SERVICE_NAME: "webserver"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - nginxdata:/etc/nginx
-    depends_on:
-      - flask
-    networks:
-      - frontend
+#   webserver:
+#     build:
+#       context: nginx
+#       dockerfile: Dockerfile
+#     image: nginxr
+#     container_name: webserver
+#     # restart: unless-stopped
+#     tty: true
+#     environment:
+#       APP_ENV: "dev"
+#       APP_NAME: "webserver"
+#       APP_DEBUG: "true"
+#       SERVICE_NAME: "webserver"
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - nginxdata:/etc/nginx
+#     depends_on:
+#       - flask
+#     networks:
+#       - frontend
 
 #Docker Networks
 networks:
@@ -55,8 +54,8 @@ networks:
     driver: bridge
 
 #Volumes
-volumes:
-  appdata:
-    driver: local
-  nginxdata:
-    driver: local
+# volumes:
+#   appdata:
+#     driver: local
+#   nginxdata:
+#     driver: local

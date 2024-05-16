@@ -18,6 +18,6 @@ RUN pip install gunicorn
 # Change current user to www
 # USER www
 
-EXPOSE 5020
+EXPOSE 5021
 
-CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5020", "wsgi"]
+CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5021", "wsgi"]
